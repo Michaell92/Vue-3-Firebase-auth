@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,600&family=Hind+Madurai&family=Titillium+Web&display=swap");
+
+$font-stack: "Hind Madurai", sans-serif;
+$font-title: "Titillium Web", sans-serif;
+$font-large: "Exo 2", sans-serif;
+$font-color: #444444;
+$background-color: #f2ecff;
+$light-color: #f4f4f4;
+$main-color: #0066ac;
+$main-color-light: #008dc5;
+$main-color-light-2: #00b0c1;
+$main-button: rgb(135, 81, 164);
+$purple: rgb(0, 93, 143);
+
+//   Mixins
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+$spaceamounts: (1, 2, 3, 4, 5);
+
+@each $space in $spaceamounts {
+  .m-#{$space} {
+    margin: #{$space}rem;
+  }
+  .my-#{$space} {
+    margin: #{$space}rem 0;
+  }
+  .p-#{$space} {
+    padding: #{$space}rem;
+  }
+  .py-#{$space} {
+    padding: #{$space}rem 0;
+  }
+}
+
+// Utility classes
+
+.container {
+  // max-width: 1400px;
+  padding: 50px 20px;
+  margin: 10px auto;
+  // overflow: hidden;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.no-select {
+  user-select: none;
+}
+
+.button-basic {
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  @include flex-center;
+  font-size: 16px;
+}
+
+.button-primary {
+  @extend .button-basic;
+  color: $light-color;
+  background-color: $main-button;
+}
+
+.button-secondary {
+  @extend .button-basic;
+  background-color: darken(
+    $light-color,
+    5%
+  );
+}
+
+.button-primary:hover {
+  background-color: lighten(
+    $main-button,
+    10%
+  );
+}
+
+.button-secondary:hover {
+  background-color: darken(
+    $light-color,
+    10%
+  );
+}

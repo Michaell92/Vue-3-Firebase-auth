@@ -1,0 +1,35 @@
+#nav-main {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  padding: 15px 30px;
+  border-bottom: 4px solid
+    $main-color-light-2;
+
+  #home-page {
+    @include absolute-center;
+    max-width: 250px;
+    img {
+      margin-left: 10px;
+      width: 50px;
+    }
+    div {
+      @include flex-center;
+    }
+  }
+
+  #git {
+    flex-basis: 0;
+  }
+}
+
+#sign-up {
+  padding: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  a:first-child {
+    margin-right: 7px;
+  }
+}

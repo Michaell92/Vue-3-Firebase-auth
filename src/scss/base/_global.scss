@@ -1,0 +1,57 @@
+html {
+  font-family: $font-stack;
+  background-color: $background-color;
+  font-size: 16px;
+  color: $font-color;
+  width: 100%;
+  margin: 0 auto;
+}
+
+body {
+  position: relative;
+  height: 100vh;
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+}
+
+a,
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+textarea,
+button,
+input[type="text"],
+textarea {
+  font-family: $font-stack;
+  font-size: 16px;
+  color: $font-color;
+}
+
+i {
+  display: inline-block;
+}
+
+h1,
+h2,
+h3,
+a {
+  font-family: $font-large;
+  color: $purple;
+}
+
+h1 {
+  font-size: 35px;
+}
+
+h2 {
+  font-size: 30px;
+}
+
+h3 {
+  font-size: 25px;
+}
