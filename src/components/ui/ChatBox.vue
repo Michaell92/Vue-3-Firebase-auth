@@ -5,9 +5,9 @@
       <div id="messages">
         <user-message
           v-for="message in messages"
-          :key="message"
-          :message="message"
-          :date="date"
+          :key="message.date"
+          :content="message.content"
+          :date="message.date"
         ></user-message>
       </div>
     </div>
@@ -20,7 +20,7 @@
         <textarea
           type="text"
           ref="commentBox"
-          v-model="message"
+          v-model="content"
           @keydown="adjustHeight"
         />
         <input
@@ -52,8 +52,8 @@ export default {
   },
   data() {
     return {
-      message: "",
-      date: "",
+      content: "",
+      message: {},
     };
   },
   computed: {},
@@ -62,23 +62,32 @@ export default {
     submitMessage() {
       if (
         this.category === "general" &&
-        this.message
+        this.content.trim().length
       ) {
+        // Add message date and content
+        const date =
+          new Date().toUTCString();
+
+        this.message.date = date;
+        this.message.content =
+          this.content;
+
+        // Dispatch
         this.$store.dispatch(
           "updateMessages",
           this.message
         );
 
-        // Add message date
-        this.date =
-          new Date().toUTCString();
-
         //   Remove message
-        this.message = "";
+        this.content = "";
+
+        this.message = {};
+
+        console.log(this.messages);
       }
     },
     // Adjust hight of the comment box
-    adjustHeight() {
+    adjustHeight(e) {
       const comment =
         this.$refs.commentBox;
 
@@ -98,6 +107,17 @@ export default {
       if (comment.scrollHeight > 100) {
         // Add scroll bar
         comment.style.overflow = "auto";
+      }
+
+      //   Submit message if enter is pressed and prevent line break unless shift is pressed too
+      if (
+        e.keyCode === 13 &&
+        !e.shiftKey
+      ) {
+        e.preventDefault();
+
+        // Submit message
+        this.submitMessage();
       }
     },
   },

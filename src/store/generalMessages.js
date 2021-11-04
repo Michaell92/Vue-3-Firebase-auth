@@ -2,11 +2,10 @@ export default {
   state() {
     return {
       messages: [
-        "dwdwadwa",
-        "dwadwa",
-        1,
-        2,
-        3,
+        {
+          content: "dawdwa",
+          date: new Date().toDateString(),
+        },
       ],
     };
   },

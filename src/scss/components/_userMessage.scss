@@ -1,8 +1,35 @@
 #message {
   display: flex;
   flex-direction: column;
-  margin: 15px 0;
+  margin: 10px 0;
+  padding-right: 10px;
+  #info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    #user {
+      @include flex-center;
+      justify-content: flex-start;
+      img {
+        width: 20px;
+        margin-right: 5px;
+      }
+      #name {
+        font-weight: bold;
+        font-size: 15px;
+      }
+    }
+    #date {
+      font-size: 13px;
+      font-weight: bold;
+      font-family: Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold", sans-serif;
+    }
+  }
+
   #content {
-    margin: 5px 0;
+    margin: 10px 0;
+    word-break: break-word;
   }
 }

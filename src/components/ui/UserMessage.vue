@@ -1,11 +1,22 @@
 <template>
   <!-- Message structure -->
   <div id="message">
-    <div id="name">Anonymous</div>
-    <div id="content">
-      {{ message }}
+    <!-- User -->
+    <div id="info">
+      <div id="user">
+        <img
+          src="../../assets/chat-icon.svg"
+          alt="logo"
+        />
+        <span id="name">Anonymous</span>
+      </div>
+      <div id="date">{{ date }}</div>
     </div>
-    <div id="date">{{ date }}</div>
+
+    <!-- Content -->
+    <div id="content">
+      {{ content }}
+    </div>
   </div>
 </template>
 
@@ -13,12 +24,12 @@
 export default {
   props: {
     //   Message prop
-    message: {
+    content: {
       type: [String, Number],
       required: true,
     },
     date: {
-      type: [String, Number],
+      type: String,
       required: true,
     },
   },
