@@ -11,7 +11,12 @@ export default {
   },
   mutations: {
     updateFinal(state, data) {
-      state.messages.push(data);
+      // Loop messages and add each to final list
+      for (const message in data) {
+        state.messages.push(
+          data[message]
+        );
+      }
     },
   },
   actions: {

@@ -8,6 +8,7 @@
           :key="message.date"
           :content="message.content"
           :date="message.date"
+          :userName="message.userName"
         ></user-message>
       </div>
     </div>
@@ -36,6 +37,9 @@
 
 <script>
 import UserMessage from "./UserMessage.vue";
+// Get firebase data
+import fb from "../../firebase.js";
+
 export default {
   components: {
     UserMessage,
@@ -65,25 +69,28 @@ export default {
         this.content.trim().length
       ) {
         // Add message date and content
+
+        const d = new Date();
+
+        // Format date
         const date =
-          new Date().toUTCString();
+          d.getHours() +
+          ":" +
+          d.getMinutes() +
+          ", " +
+          d.toDateString();
 
         this.message.date = date;
         this.message.content =
           this.content;
 
-        // Dispatch
-        this.$store.dispatch(
-          "updateMessages",
-          this.message
-        );
+        // Update database
+        this.updateDB(d.getTime());
 
-        //   Remove message
+        //   Reset message and content
         this.content = "";
 
         this.message = {};
-
-        console.log(this.messages);
       }
     },
     // Adjust hight of the comment box
@@ -119,6 +126,15 @@ export default {
         // Submit message
         this.submitMessage();
       }
+    },
+    // Update firebase
+    updateDB(date) {
+      const database = fb.ref(
+        fb.database,
+        "chatMessages/" + date
+      );
+
+      fb.set(database, this.message);
     },
   },
 };

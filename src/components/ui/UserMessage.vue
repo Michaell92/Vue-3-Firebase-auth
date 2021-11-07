@@ -8,7 +8,9 @@
           src="../../assets/chat-icon.svg"
           alt="logo"
         />
-        <span id="name">Anonymous</span>
+        <span id="name">{{
+          userNameFinal
+        }}</span>
       </div>
       <div id="date">{{ date }}</div>
     </div>
@@ -24,6 +26,10 @@
 export default {
   props: {
     //   Message prop
+    userName: {
+      type: String,
+      required: false,
+    },
     content: {
       type: [String, Number],
       required: true,
@@ -31,6 +37,14 @@ export default {
     date: {
       type: String,
       required: true,
+    },
+  },
+  //   Get username if there is one
+  computed: {
+    userNameFinal() {
+      if (this.userName) {
+        return this.userName;
+      } else return "Anonymous";
     },
   },
 };

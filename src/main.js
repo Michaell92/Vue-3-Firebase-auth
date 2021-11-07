@@ -10,3 +10,14 @@ app.use(router);
 app.use(store);
 
 app.mount("#app");
+
+import fb from "./firebase.js";
+
+const data = fb.ref(
+  fb.database,
+  "test"
+);
+
+// fb.onValue(data, (snapshot) => {
+//   console.log(snapshot.val());
+// });

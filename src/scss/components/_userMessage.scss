@@ -29,7 +29,14 @@
   }
 
   #content {
-    margin: 10px 0;
+    margin: 5px 0;
+    padding: 10px;
     word-break: break-word;
+    background-color: rgb(
+      218,
+      217,
+      217
+    );
+    border-radius: 20px;
   }
 }

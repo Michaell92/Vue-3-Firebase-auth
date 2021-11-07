@@ -5,10 +5,17 @@
 
 <script>
 import TheHeader from "./components/layout/TheHeader.vue";
-
 export default {
   components: {
     TheHeader,
+  },
+  mounted() {
+    // fb.set(
+    //   fb.ref(fb.database, "test/"),
+    //   {
+    //     user: "test3",
+    //   }
+    // );
   },
 };
 </script>
