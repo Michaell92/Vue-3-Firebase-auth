@@ -1,8 +1,8 @@
 <template>
   <!-- Chatbox structure -->
   <div id="chatBoxContainer">
-    <div id="wrapper">
-      <div id="messages">
+    <div id="wrapper" ref="wrapper">
+      <div id="messages" ref="messages">
         <user-message
           v-for="message in messages"
           :key="message.date"
@@ -81,6 +81,8 @@ export default {
           d.toDateString();
 
         this.message.date = date;
+
+        // Add content to message object
         this.message.content =
           this.content;
 
@@ -127,14 +129,50 @@ export default {
         this.submitMessage();
       }
     },
+    // Date formatter
+    getDate() {
+      const date = new Date();
+      const formatted =
+        date.getMonth() +
+        ", " +
+        date.getDay() +
+        ", " +
+        date.getFullYear();
+
+      return formatted;
+    },
+    // Scroll to bottom of the chat after new message
+    scrollToBottom() {
+      // Get element
+      const messages =
+        this.$refs.messages;
+
+      // Scroll to bottom
+      messages.scrollTo(
+        0,
+        messages.scrollHeight
+      );
+    },
     // Update firebase
-    updateDB(date) {
-      const database = fb.ref(
-        fb.database,
-        "chatMessages/" + date
+    async updateDB(date) {
+      await this.$store.dispatch(
+        "updateMessages",
+        this.message
       );
 
-      fb.set(database, this.message);
+      this.scrollToBottom();
+
+      //   // Get path
+      //   const database = fb.ref(
+      //     fb.database,
+      //     "chatMessages/" +
+      //       this.getDate() +
+      //       "/" +
+      //       date
+      //   );
+
+      //   // Update
+      //   fb.set(database, this.message);
     },
   },
 };

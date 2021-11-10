@@ -7,7 +7,10 @@ import {
   set,
   onValue,
   child,
-  get
+  get,
+  onChildAdded,
+  onChildChanged,
+  onChildRemoved,
 } from "firebase/database";
 
 // Firebase config
@@ -40,5 +43,8 @@ export default {
   onValue,
   child,
   get,
+  onChildAdded,
+  onChildChanged,
+  onChildRemoved,
   database,
 };

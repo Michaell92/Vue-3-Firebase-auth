@@ -10,16 +10,17 @@
 
   //   Reverse messages so it scrolls to bottom automatically
   #wrapper {
-    height: 300px;
-    overflow: auto;
-    display: flex;
-    flex-direction: column-reverse;
-    scroll-behavior: smooth;
+    // height: 300px;
   }
 
   #messages {
     // display: flex;
     // flex-direction: column-reverse;
+    height: 300px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: smooth;
   }
 
   #commentBox {

@@ -11,6 +11,7 @@ const router = createRouter({
   routes: [
     {
       path: "/",
+      redirect: "/generalchat",
       component: LandingPage,
       children: [
         {
