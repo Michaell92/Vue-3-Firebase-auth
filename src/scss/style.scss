@@ -1,9 +1,9 @@
-@import "./helpers/fonts";
 @import "./helpers/variables-mixins";
 @import "./base/reset";
 @import "./base/global";
 @import "./components/header";
 @import "./components/landingPage";
 @import "./components/chatBox";
-@import "./components/generalChat";
 @import "./components/userMessage";
+@import "./components/privateMessages";
+@import "./components/signUp";

@@ -1,0 +1,21 @@
+.title {
+  font-size: 2rem;
+  align-self: center;
+  width: 100%;
+  text-align: center;
+  border-bottom: 3px solid;
+  padding-bottom: 5px;
+}
+
+.messagesWrapper {
+  margin: auto 0 auto 0;
+  align-self: center;
+}
+
+.noMessagesAlert {
+  margin: 1rem;
+  font-size: 1.5rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(6, 6, 65);
+  font-weight: bold;
+}

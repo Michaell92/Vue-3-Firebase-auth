@@ -1,37 +1,23 @@
 <template>
   <!-- Chatbox structure -->
-  <div id="chatBoxContainer">
-    <div id="wrapper">
-      <div id="messages">
-        <user-message
-          v-for="message in messages"
-          :key="message.date"
-          :content="message.content"
-          :date="message.date"
-          :userName="message.userName"
-        ></user-message>
-      </div>
+  <div class="wrapper">
+    <div id="messages">
+      <user-message
+        v-for="message in messages"
+        :key="message.date"
+        :content="message.content"
+        :date="message.date"
+        :userName="message.userName"
+      ></user-message>
     </div>
+  </div>
 
-    <!-- Submit message form -->
-    <div id="commentBox">
-      <form
-        @submit.prevent="submitMessage"
-      >
-        <textarea
-          type="text"
-          ref="commentBox"
-          v-model="content"
-          @keydown="adjustHeight"
-        />
-        <input
-          type="submit"
-          class="button-primary"
-          id="submitButton"
-          value="Send"
-        />
-      </form>
-    </div>
+  <!-- Submit message form -->
+  <div id="commentBox">
+    <form @submit.prevent="submitMessage">
+      <textarea type="text" ref="commentBox" v-model="content" @keydown="adjustHeight" />
+      <input type="submit" class="button-primary" id="submitButton" value="Send" />
+    </form>
   </div>
 </template>
 

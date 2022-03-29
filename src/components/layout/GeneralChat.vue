@@ -1,8 +1,6 @@
 <template>
-  <chat-box
-    :messages="userMessages"
-    category="general"
-  ></chat-box>
+  <div class="title" style="margin-bottom: auto">General Chat</div>
+  <chat-box :messages="userMessages" category="general"></chat-box>
 </template>
 
 <script>
@@ -22,22 +20,56 @@ export default {
     },
   },
   mounted() {
-    // Get database data
+
+    // FIREBASE METHODS
+    const order = fb.orderByKey
+    const limitFirst = fb.limitToFirst
+    const limitLast = fb.limitToLast
+    let active = false
+
     // Data path
     const data = fb.ref(
       fb.database,
       "chatMessages"
     );
 
-    // Add listener for messages on database
-    fb.onValue(data, (snapshot) => {
-      this.$store.dispatch(
-        "updateMessages",
-        snapshot.val()
-      );
+    // DATA
+    const getData = (num) => fb.query(data, order(), limitLast(num))
 
-      console.log(snapshot.val());
+    fb.get(getData(15)).then(snapshot => {
+
+      if (snapshot.exists()) {
+        const messages = snapshot.val()
+
+        // Check if messages are already there
+        if (!(this.$store.getters.messages.length > 1)) {
+          this.$store.dispatch(
+            "updateMessages",
+            messages
+          );
+        }
+
+      } else {
+        // console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
     });
+
+    // Add listener for messages on database
+    fb.onValue(getData(1), (snapshot) => {
+      const messages = snapshot.val()
+
+      if (active) {
+        this.$store.dispatch(
+          "updateMessages",
+          messages
+        );
+      }
+
+      active = true
+    });
+
   },
 };
 </script>

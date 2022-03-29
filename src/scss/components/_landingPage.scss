@@ -13,8 +13,18 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+
     li {
-      margin: 3px 0;
+      margin: 8px 0;
+    }
+    li span {
+      padding: 5px;
+      font-size: 1.2rem;
+      border-radius: 7px;
+      font-size: 1.3rem;
+    }
+    li span:hover {
+      background: rgb(221, 216, 216);
     }
   }
 
@@ -22,5 +32,9 @@
     @include absolute-center;
     width: 50vw;
     // overflow: auto;
+  }
+
+  #sign-out {
+    text-align: center;
   }
 }

@@ -4,21 +4,18 @@
     <!-- User -->
     <div id="info">
       <div id="user">
-        <img
-          src="../../assets/chat-icon.svg"
-          alt="logo"
-        />
-        <span id="name">{{
-          userNameFinal
-        }}</span>
+        <img src="../../assets/chat-icon.svg" alt="logo" />
+        <span id="name">
+          {{
+            userNameFinal
+          }}
+        </span>
       </div>
       <div id="date">{{ date }}</div>
     </div>
 
     <!-- Content -->
-    <div id="content">
-      {{ content }}
-    </div>
+    <div id="content">{{ content }}</div>
   </div>
 </template>
 
@@ -32,11 +29,11 @@ export default {
     },
     content: {
       type: [String, Number],
-      required: true,
+      required: false,
     },
     date: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   //   Get username if there is one

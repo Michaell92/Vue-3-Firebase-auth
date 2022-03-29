@@ -1,21 +1,14 @@
 export default {
   state() {
     return {
-      messages: [
-        {
-          content: "dawdwa",
-          date: new Date().toDateString(),
-        },
-      ],
+      messages: [{ content: "Hello" }],
     };
   },
   mutations: {
     updateFinal(state, data) {
       // Loop messages and add each to final list
       for (const message in data) {
-        state.messages.push(
-          data[message]
-        );
+        state.messages.push(data[message]);
       }
     },
   },

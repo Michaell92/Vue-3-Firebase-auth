@@ -3,8 +3,7 @@
   justify-content: flex-end;
   position: relative;
   padding: 15px 30px;
-  border-bottom: 4px solid
-    $main-color-light-2;
+  border-bottom: 4px solid $main-color-light-2;
 
   #home-page {
     @include absolute-center;
@@ -32,4 +31,17 @@
   a:first-child {
     margin-right: 7px;
   }
+
+  .main-button {
+    width: 110px;
+    height: 35px;
+    font-size: 1.1rem;
+  }
+}
+
+#sign-out {
+  padding: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }

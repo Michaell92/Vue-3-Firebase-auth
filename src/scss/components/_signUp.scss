@@ -1,0 +1,45 @@
+#signup-form {
+  @include flex-center;
+  #form-wrap {
+    @include flex-center;
+    flex-direction: column;
+    // width: 50vw;
+    width: 360px;
+    height: 50vh;
+    background-color: rgb(60, 62, 70);
+    border: 10px solid green;
+    border-radius: 7px;
+    margin: 3rem;
+
+    @media screen and (max-width: 450px) {
+      margin: 3rem 1rem;
+    }
+  }
+
+  input {
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    width: 15rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    font-family: "Helvetica Neue", Helvetica, Arial;
+    border-radius: 5px;
+  }
+
+  button {
+    margin-top: 2rem;
+    width: 7rem;
+    height: 2.5rem;
+    font-size: 1.1rem;
+    background-color: lighten(green, 5%);
+  }
+
+  button:hover {
+    background-color: green;
+  }
+
+  #warning {
+    color: red;
+    min-height: 20px;
+  }
+}

@@ -4,8 +4,8 @@ $font-stack: "Hind Madurai", sans-serif;
 $font-title: "Titillium Web", sans-serif;
 $font-large: "Exo 2", sans-serif;
 $font-color: #444444;
-$background-color: #f2ecff;
-$light-color: #f4f4f4;
+$background-color: #e4e4eb;
+$light-color: #cecfd4;
 $main-color: #0066ac;
 $main-color-light: #008dc5;
 $main-color-light-2: #00b0c1;
@@ -71,28 +71,20 @@ $spaceamounts: (1, 2, 3, 4, 5);
 
 .button-primary {
   @extend .button-basic;
-  color: $light-color;
+  color: #fff;
   background-color: $main-button;
 }
 
 .button-secondary {
   @extend .button-basic;
-  background-color: darken(
-    $light-color,
-    5%
-  );
+  color: darken($purple, 10%);
+  background-color: darken($light-color, 5%);
 }
 
 .button-primary:hover {
-  background-color: lighten(
-    $main-button,
-    10%
-  );
+  background-color: lighten($main-button, 10%);
 }
 
 .button-secondary:hover {
-  background-color: darken(
-    $light-color,
-    10%
-  );
+  background-color: darken($light-color, 10%);
 }
