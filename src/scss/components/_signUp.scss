@@ -13,33 +13,64 @@
 
     @media screen and (max-width: 450px) {
       margin: 3rem 1rem;
+      height: 60vh;
     }
-  }
 
-  input {
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    width: 15rem;
-    height: 2.5rem;
-    font-size: 1rem;
-    font-family: "Helvetica Neue", Helvetica, Arial;
-    border-radius: 5px;
-  }
+    input {
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      width: 15rem;
+      height: 2.5rem;
+      font-size: 1rem;
+      font-family: "Helvetica Neue", Helvetica, Arial;
+      border-radius: 5px;
+    }
 
-  button {
-    margin-top: 2rem;
-    width: 7rem;
-    height: 2.5rem;
-    font-size: 1.1rem;
-    background-color: lighten(green, 5%);
-  }
+    span {
+      color: #fff;
+      font-size: 1.1rem;
+      margin: 0.5rem 0.5rem;
+    }
 
-  button:hover {
-    background-color: green;
-  }
+    button,
+    a {
+      color: #fff;
+    }
 
-  #warning {
-    color: red;
-    min-height: 20px;
+    button {
+      // margin-top: 2rem;
+      width: 7rem;
+      height: 2.5rem;
+      font-size: 1.1rem;
+    }
+
+    .login {
+      background-color: #bb0a0a;
+
+      &:hover {
+        background-color: lighten(#bb0a0a, 5%);
+      }
+    }
+
+    .signup {
+      background-color: lighten(green, 5%);
+
+      &:hover {
+        background-color: green;
+      }
+    }
+
+    #warning {
+      color: red;
+      min-height: 20px;
+    }
+
+    input:last-of-type {
+      margin-bottom: 2rem;
+    }
+
+    .lead {
+      font-size: 2.5rem;
+    }
   }
 }

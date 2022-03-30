@@ -5,9 +5,22 @@
   padding: 15px 30px;
   border-bottom: 4px solid $main-color-light-2;
 
+  @media screen and (max-width: 600px) {
+    justify-content: space-around;
+    padding: 10px;
+  }
+
   #home-page {
     @include absolute-center;
     max-width: 250px;
+
+    @media screen and (max-width: 600px) {
+      position: relative;
+      transform: translate(0, 0);
+      left: 0;
+      top: 0;
+    }
+
     img {
       margin-left: 10px;
       width: 50px;
@@ -19,6 +32,8 @@
 
   #git {
     flex-basis: 0;
+
+    @include flex-center;
   }
 }
 

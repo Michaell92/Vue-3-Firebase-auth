@@ -1,13 +1,16 @@
 <template>
     <form id="signup-form" @submit.prevent="validate">
         <div id="form-wrap">
+            <span class="lead">Sign up</span>
             <div id="warning" ref="warning"></div>
             <input type="email" v-model="signUpName" placeholder="Email" required />
 
             <input type="password" v-model="password" placeholder="Password" required />
             <input type="password" v-model="passwordRepeat" placeholder="Repeat password" required />
 
-            <button type="submit" class="button-basic button-primary">Sign Up</button>
+            <button type="submit" class="button-basic button-primary signup">Sign Up</button>
+            <span>or</span>
+            <router-link to="/login" class="button-secondary main-button login">Log in</router-link>
         </div>
     </form>
 </template>
@@ -24,6 +27,7 @@ export default {
         }
     },
     methods: {
+        // Validate form
         validate() {
             const warning = this.$refs.warning
             if (this.password !== this.passwordRepeat) {
@@ -48,6 +52,7 @@ export default {
 
             this.signUp()
         },
+        // Create user
         signUp() {
             const auth = getAuth()
 

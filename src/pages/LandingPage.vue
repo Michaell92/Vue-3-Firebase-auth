@@ -42,7 +42,8 @@ import { getAuth, signOut } from "firebase/auth";
 
 export default {
   computed: {
-    auth: () => getAuth()
+    auth: () => getAuth(),
+
   },
   methods: {
     signOut() {
@@ -51,7 +52,7 @@ export default {
       }).catch((err) => {
         console.log(err)
       })
-    }
+    },
   }
 };
 </script>

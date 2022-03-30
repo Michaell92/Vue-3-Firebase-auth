@@ -15,6 +15,8 @@ import {
   query,
 } from "firebase/database";
 
+import { getAuth } from "firebase/auth";
+
 // Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyCAnkAdwUmL_qGZpSLBlNLp9nNagu_lCaI",
@@ -32,6 +34,9 @@ const app = initializeApp(firebaseConfig);
 
 // Get database
 const database = getDatabase(app);
+
+// Auth config
+const auth = getAuth(app);
 
 export default {
   ref,

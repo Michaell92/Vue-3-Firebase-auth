@@ -1,37 +1,75 @@
 #landingPage {
   display: flex;
-  // justify-content: flex-start;
-  width: 100%;
-  // height: 30vh;
-  // position: relative;
-  padding: 20px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  align-items: center;
+  justify-content: space-between;
+  margin: 5rem 2rem 0 2rem;
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 600px) {
+    margin: 2rem;
+  }
+
+  &::after {
+    content: "";
+    flex: 1;
+  }
 
   #nav-left {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    flex: 1;
 
-    li {
-      margin: 8px 0;
-    }
-    li span {
-      padding: 5px;
-      font-size: 1.2rem;
-      border-radius: 7px;
-      font-size: 1.3rem;
-    }
-    li span:hover {
-      background: rgb(221, 216, 216);
+    ul {
+      @media screen and (max-width: 1000px) {
+        display: flex;
+        margin-bottom: 2rem;
+      }
+
+      @media screen and (max-width: 600px) {
+        flex-direction: column;
+      }
+
+      li {
+        margin: 8px 0;
+
+        @media screen and (max-width: 1000px) {
+          margin: 0 0.5rem;
+        }
+
+        @media screen and (max-width: 600px) {
+          margin: 2px;
+        }
+      }
+
+      li span {
+        padding: 5px;
+        font-size: 1.2rem;
+        border-radius: 7px;
+        font-size: 1.3rem;
+      }
+
+      li span:hover {
+        background: rgb(221, 216, 216);
+      }
     }
   }
 
   #landingPage-main {
-    @include absolute-center;
+    // @include absolute-center;
     width: 50vw;
-    // overflow: auto;
+    overflow: auto;
+
+    @media screen and (max-width: 1000px) {
+      width: 80vw;
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 90vw;
+    }
   }
 
   #sign-out {

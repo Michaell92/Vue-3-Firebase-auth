@@ -1,12 +1,16 @@
 <template>
     <form id="signup-form" @submit.prevent="logIn">
         <div id="form-wrap">
+            <span class="lead">Login</span>
             <div id="warning" ref="warning"></div>
             <input type="email" v-model="signInName" placeholder="Email" />
 
             <input type="password" v-model="password" placeholder="Password" />
 
-            <button type="submit" id="login-button" class="button-basic button-primary">Log In</button>
+            <button type="submit" class="button-basic button-primary login">Log In</button>
+            <span>or</span>
+
+            <router-link to="/signup" class="button-primary main-button signup">Sign up</router-link>
         </div>
     </form>
 </template>
