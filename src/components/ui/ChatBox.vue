@@ -46,7 +46,11 @@ export default {
       message: {},
     };
   },
-  computed: {},
+  computed: {
+    randomName() {
+      return "Anonymous" + Math.random().toFixed(3).slice(2);
+    }
+  },
   methods: {
     //   Submit message to general messages store
     submitMessage() {
@@ -69,6 +73,7 @@ export default {
         this.message.date = date;
         this.message.content =
           this.content;
+        this.message.userName = this.randomName
 
         // Update database
         this.updateDB(d.getTime());

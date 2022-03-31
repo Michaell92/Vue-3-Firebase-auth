@@ -1,7 +1,7 @@
 export default {
   state() {
     return {
-      messages: [{ content: "Hello" }],
+      messages: [],
     };
   },
   mutations: {

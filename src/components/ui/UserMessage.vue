@@ -7,7 +7,7 @@
         <img src="../../assets/chat-icon.svg" alt="logo" />
         <span id="name">
           {{
-            userNameFinal
+            userName
           }}
         </span>
       </div>
@@ -34,14 +34,6 @@ export default {
     date: {
       type: String,
       required: false,
-    },
-  },
-  //   Get username if there is one
-  computed: {
-    userNameFinal() {
-      if (this.userName) {
-        return this.userName;
-      } else return "Anonymous";
     },
   },
 };
