@@ -1,4 +1,5 @@
 <template>
+    <div v-if="saved" class="success">Saved!</div>
     <div class="title">Settings</div>
     <div class="wrap">
         <div>
@@ -99,6 +100,7 @@ export default {
             userColor: '',
             userIcon: null,
             errorMessage: '',
+            saved: false
 
         }
     },
@@ -122,6 +124,13 @@ export default {
 
             // Update store user settings
             this.$store.dispatch("changeUserSettings", { name: this.userName, color: this.userColor, icon: this.userIcon })
+
+            this.saved = true
+
+            setTimeout(() => {
+                this.saved = false
+            }, 2000)
+
 
 
 
