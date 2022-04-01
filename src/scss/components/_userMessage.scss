@@ -11,7 +11,7 @@
       @include flex-center;
       justify-content: flex-start;
       img {
-        width: 20px;
+        width: 30px;
         margin-right: 5px;
       }
       #name {
@@ -22,9 +22,7 @@
     #date {
       font-size: 13px;
       font-weight: bold;
-      font-family: Impact,
-        Haettenschweiler,
-        "Arial Narrow Bold", sans-serif;
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     }
   }
 
@@ -32,11 +30,7 @@
     margin: 5px 0;
     padding: 10px;
     word-break: break-word;
-    background-color: rgb(
-      218,
-      217,
-      217
-    );
+    background-color: rgb(218, 217, 217);
     border-radius: 20px;
   }
 }

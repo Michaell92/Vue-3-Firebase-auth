@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import LandingPage from "./pages/LandingPage.vue";
 import GeneralChat from "./components/layout/GeneralChat.vue";
 import PrivateMessages from "./components/ui/PrivateMessages.vue";
-import UserPreferences from "./components/ui/UserPreferences.vue";
+import UserSettings from "./components/layout/UserSettings.vue";
 import LogIn from "./components/layout/LogIn.vue";
 import SignUp from "./components/layout/SignUp.vue";
 import firebase from "./firebase";
@@ -15,11 +15,11 @@ const router = createRouter({
   routes: [
     {
       path: "/",
-      redirect: "/generalchat",
+      redirect: "/chat",
       component: LandingPage,
       children: [
         {
-          path: "/generalchat",
+          path: "/chat",
           component: GeneralChat,
         },
         {
@@ -27,8 +27,8 @@ const router = createRouter({
           component: PrivateMessages,
         },
         {
-          path: "/preferences",
-          component: UserPreferences,
+          path: "/settings",
+          component: UserSettings,
         },
       ],
     },
@@ -50,7 +50,6 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log(auth.currentUser);
   if (to.matched.some((record) => record.meta.requiresGuest)) {
     if (!auth.currentUser) {
       next();

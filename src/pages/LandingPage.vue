@@ -12,7 +12,7 @@
     <nav id="nav-left">
       <ul>
         <li>
-          <router-link to="/generalchat">
+          <router-link to="/chat">
             <span>General chat</span>
           </router-link>
         </li>
@@ -22,8 +22,8 @@
           </router-link>
         </li>
         <li>
-          <router-link to="/preferences">
-            <span>Preferences</span>
+          <router-link to="/settings">
+            <span>Settings</span>
           </router-link>
         </li>
       </ul>

@@ -2,7 +2,7 @@
   <div id="top-nav">
     <!-- Top navigation -->
     <nav id="nav-main">
-      <router-link to="/generalchat" id="home-page">
+      <router-link to="/" id="home-page">
         <div>
           <h2>X-COM</h2>
           <img src="../../assets/icon.svg" alt="logo" />

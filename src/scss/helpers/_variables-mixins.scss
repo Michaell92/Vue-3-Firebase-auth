@@ -6,7 +6,7 @@ $font-large: "Exo 2", sans-serif;
 $font-color: #444444;
 $background-color: #e4e4eb;
 $light-color: #cecfd4;
-$main-color: #0066ac;
+$main-color: #4f16ee;
 $main-color-light: #008dc5;
 $main-color-light-2: #00b0c1;
 $main-button: rgb(135, 81, 164);
@@ -78,7 +78,7 @@ $spaceamounts: (1, 2, 3, 4, 5);
 .button-secondary {
   @extend .button-basic;
   color: darken($purple, 10%);
-  background-color: #c1c1d9;
+  background-color: #d6d6e9;
 }
 
 .button-primary:hover {

@@ -4,7 +4,7 @@
     <!-- User -->
     <div id="info">
       <div id="user">
-        <img src="../../assets/chat-icon.svg" alt="logo" />
+        <img :src="icon" alt="logo" />
         <span id="name">
           {{
             userName
@@ -15,7 +15,7 @@
     </div>
 
     <!-- Content -->
-    <div id="content">{{ content }}</div>
+    <div id="content" :style="userColor">{{ content }}</div>
   </div>
 </template>
 
@@ -35,6 +35,36 @@ export default {
       type: String,
       required: false,
     },
+    messageColor: {
+      type: String,
+      required: false,
+    },
+    userIcon: {
+      type: Number,
+      required: false
+    }
   },
+  data() {
+    return {
+      icon: ''
+    }
+
+  },
+  computed: {
+    userColor() {
+      return 'color: ' + this.messageColor
+    },
+  },
+  mounted() {
+    if (this.userIcon) {
+      import('../../assets/chaticons/bot-' + this.userIcon + '.png').then((image) => {
+        this.icon = image.default
+      })
+    } else {
+      import("../../assets/chat-icon.svg").then((image) => {
+        this.icon = image.default
+      })
+    }
+  }
 };
 </script>

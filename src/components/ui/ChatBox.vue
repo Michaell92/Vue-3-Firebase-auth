@@ -3,11 +3,13 @@
   <div class="wrapper">
     <div id="messages">
       <user-message
-        v-for="message in messages"
-        :key="message.date"
+        v-for="(message, index) in messages"
+        :key="'message' + index"
         :content="message.content"
         :date="message.date"
         :userName="message.userName"
+        :messageColor="message.color"
+        :userIcon="message.icon"
       ></user-message>
     </div>
   </div>
@@ -49,6 +51,15 @@ export default {
   computed: {
     randomName() {
       return "Anonymous" + Math.random().toFixed(3).slice(2);
+    },
+    getUserName() {
+      return this.$store.getters.username
+    },
+    getUserColor() {
+      return this.$store.getters.color
+    },
+    getUserIcon() {
+      return this.$store.getters.icon
     }
   },
   methods: {
@@ -73,7 +84,24 @@ export default {
         this.message.date = date;
         this.message.content =
           this.content;
-        this.message.userName = this.randomName
+
+        // Set username
+        if (this.getUserName.length) {
+          this.message.userName = this.getUserName
+        } else {
+          this.message.userName = this.randomName
+        }
+
+        // Set message color
+        if (this.getUserColor.length) {
+          this.message.color = this.getUserColor
+        }
+
+        // Set user icon
+        if (this.getUserIcon) {
+          this.message.icon = this.getUserIcon
+        }
+
 
         // Update database
         this.updateDB(d.getTime());
