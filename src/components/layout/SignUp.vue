@@ -59,8 +59,8 @@ export default {
             createUserWithEmailAndPassword(auth, this.signUpName, this.password)
                 .then((userCredential) => {
                     // Signed in
-                    const user = userCredential.user;
-                    alert('Created account for: ', user)
+                    const userId = userCredential.user.uid;
+
                     this.$router.push('/')
                     // ...
                 })

@@ -17,6 +17,7 @@
 
 <script>
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import fb from "../../firebase"
 
 export default {
     data() {
@@ -26,15 +27,20 @@ export default {
             valid: false
         }
     },
+    computed: {
+        userId() {
+            this.$store.getters.userId
+        }
+    },
     methods: {
         logIn() {
             const auth = getAuth();
-
+            console.log(this.signInName, this.password)
             signInWithEmailAndPassword(auth, this.signInName, this.password)
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
-                    console.log(user, userCredential)
+
                     this.$router.push('/')
 
                     // alert('Logged in as: ', user.email)
@@ -46,6 +52,7 @@ export default {
 
                     const warning = this.$refs.warning
                     warning.innerHTML = 'Wrong username or password!'
+                    console.log(error)
 
                     setTimeout(() => {
                         warning.innerHTML = ''

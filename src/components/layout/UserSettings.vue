@@ -6,7 +6,7 @@
             <span>Set username:</span>
             <input
                 type="text"
-                v-model="userName"
+                v-model="userData.name"
                 class="user-change"
                 placeholder="Leave blank for current"
             />
@@ -84,35 +84,46 @@
         </div>
         <div class="submit">
             <button class="button-primary save-button" @click="setUserSettings">Save</button>
-            <span>or</span>
-            <router-link to="/signup" class="button-primary main-button signup-notice">Sign up</router-link>
-            <span>to remember settings.</span>
+            <div v-if="!isAuth">
+                <span>or</span>
+                <router-link to="/signup" class="button-primary main-button signup-notice">Sign up</router-link>
+                <span>to remember settings.</span>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
+import fb from '../../firebase'
 
 export default {
     data() {
         return {
-            userName: '',
-            userColor: '',
-            userIcon: null,
             errorMessage: '',
-            saved: false
-
+            saved: false,
+            userData: {
+                name: '', color: '', icon: null
+            }
         }
+    },
+    computed: {
+        isAuth() {
+            return this.$store.getters.isAuth
+        },
+        userId() {
+            return this.$store.getters.userId
+        }
+
     },
     methods: {
         changeColor(e) {
-            this.userColor = e.target.value
+            this.userData.color = e.target.value
         },
 
         // Change current user settings
         setUserSettings() {
             // Check if username is valid
-            if (this.userName.length > 0 && this.userName.length < 3) {
+            if (this.userData.name.length > 0 && this.userData.name.length < 3) {
                 this.errorMessage = "Username must be at least 3 characters!"
 
                 setTimeout(() => {
@@ -123,21 +134,29 @@ export default {
             }
 
             // Update store user settings
-            this.$store.dispatch("changeUserSettings", { name: this.userName, color: this.userColor, icon: this.userIcon })
+            this.$store.dispatch("changeUserSettings", this.userData)
+
+            // Update firebase
+            if (this.isAuth) {
+                // Get database
+                const database = fb.ref(
+                    fb.database,
+                    "userList/" + this.userId
+                );
+
+                // Update database
+                fb.set(database, this.userData);
+            }
 
             this.saved = true
 
             setTimeout(() => {
                 this.saved = false
             }, 2000)
-
-
-
-
         },
         changeIcon(num) {
-            this.userIcon = num;
+            this.userData.icon = num;
         }
-    }
+    },
 }
 </script>

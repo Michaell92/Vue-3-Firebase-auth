@@ -88,8 +88,10 @@ export default {
         // Set username
         if (this.getUserName.length) {
           this.message.userName = this.getUserName
+          console.log(this.getUserName)
         } else {
           this.message.userName = this.randomName
+          console.log(2)
         }
 
         // Set message color

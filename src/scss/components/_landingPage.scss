@@ -29,10 +29,6 @@
         margin-bottom: 2rem;
       }
 
-      @media screen and (max-width: 600px) {
-        flex-direction: column;
-      }
-
       li {
         margin: 8px 0;
 
@@ -50,6 +46,10 @@
         font-size: 1.2rem;
         border-radius: 7px;
         font-size: 1.3rem;
+
+        @media screen and (max-width: 600px) {
+          font-size: 1.2rem;
+        }
       }
 
       li span:hover {

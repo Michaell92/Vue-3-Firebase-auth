@@ -1,6 +1,8 @@
 export default {
   state() {
     return {
+      isAuth: null,
+      userId: null,
       messages: [],
       username: "",
       color: "",
@@ -15,9 +17,16 @@ export default {
       }
     },
 
+    // Update auth info
+    updateAuthAndId(state, data) {
+      state.isAuth = data.isAuth;
+      state.userId = data.id;
+    },
+
     // Update user settings for each message
     updateUserSettings(state, data) {
-      if (!state.username.length) {
+      console.log(data);
+      if (data.name.length) {
         state.username = data.name;
       }
 
@@ -29,6 +38,14 @@ export default {
         state.icon = data.icon;
       }
     },
+    resetUser(state) {
+      state.isAuth = null;
+      state.userId = null;
+      state.username = "";
+      state.color = "";
+      state.icon = null;
+      console.log(state);
+    },
   },
   actions: {
     updateMessages({ commit }, data) {
@@ -36,6 +53,12 @@ export default {
     },
     changeUserSettings({ commit }, data) {
       commit("updateUserSettings", data);
+    },
+    changeUserAuthAndId({ commit }, data) {
+      commit("updateAuthAndId", data);
+    },
+    resetUser({ commit }) {
+      commit("resetUser");
     },
   },
   getters: {
@@ -50,6 +73,12 @@ export default {
     },
     icon(state) {
       return state.icon;
+    },
+    isAuth(state) {
+      return state.isAuth;
+    },
+    userId(state) {
+      return state.userId;
     },
   },
 };
