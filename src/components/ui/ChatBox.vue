@@ -52,14 +52,8 @@ export default {
     randomName() {
       return "Anonymous" + Math.random().toFixed(3).slice(2);
     },
-    getUserName() {
-      return this.$store.getters.username
-    },
-    getUserColor() {
-      return this.$store.getters.color
-    },
-    getUserIcon() {
-      return this.$store.getters.icon
+    getUserData() {
+      return this.$store.getters.userData
     }
   },
   methods: {
@@ -86,22 +80,20 @@ export default {
           this.content;
 
         // Set username
-        if (this.getUserName.length) {
-          this.message.userName = this.getUserName
-          console.log(this.getUserName)
+        if (this.getUserData.name.length) {
+          this.message.userName = this.getUserData.name
         } else {
           this.message.userName = this.randomName
-          console.log(2)
         }
 
         // Set message color
-        if (this.getUserColor.length) {
-          this.message.color = this.getUserColor
+        if (this.getUserData.color.length) {
+          this.message.color = this.getUserData.color
         }
 
         // Set user icon
-        if (this.getUserIcon) {
-          this.message.icon = this.getUserIcon
+        if (this.getUserData.icon) {
+          this.message.icon = this.getUserData.icon
         }
 
 

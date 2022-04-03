@@ -65,14 +65,12 @@ export default {
     messages(state) {
       return state.messages;
     },
-    username(state) {
-      return state.username;
-    },
-    color(state) {
-      return state.color;
-    },
-    icon(state) {
-      return state.icon;
+    userData(state) {
+      return {
+        name: state.username,
+        color: state.color,
+        icon: state.icon,
+      };
     },
     isAuth(state) {
       return state.isAuth;

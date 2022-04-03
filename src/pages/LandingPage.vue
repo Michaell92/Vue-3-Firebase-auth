@@ -39,7 +39,6 @@
 
 <script>
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import fb from '../firebase'
 
 export default {
   computed: {
@@ -63,33 +62,9 @@ export default {
       if (user) {
         // Change auth status
         this.$store.dispatch('changeUserAuthAndId', { isAuth: true, id: user.uid })
-
-        // Get user details
-        const userData = fb.ref(
-          fb.database,
-          "userList/" + user.uid
-        );
-
-        // Get user details
-        fb.get(userData, `userList/${user.uid}`).then((snapshot) => {
-          console.log(user.uid)
-          if (snapshot.exists()) {
-            const userData = snapshot.val()
-            // Update store if its logged in userData
-            this.$store.dispatch('changeUserSettings', { name: userData.name, color: userData.color, icon: userData.icon })
-
-            console.log(snapshot.val());
-          } else {
-            console.log("No data available");
-          }
-        }).catch((error) => {
-          console.error(error);
-        });
-
-
-
       } else {
         this.$store.dispatch('resetUser')
+        console.log('nouser')
       }
     })
   }

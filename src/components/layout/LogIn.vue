@@ -41,10 +41,30 @@ export default {
                     // Signed in 
                     const user = userCredential.user;
 
-                    this.$router.push('/')
 
-                    // alert('Logged in as: ', user.email)
-                    // ...
+                    // Get user details
+                    const userData = fb.ref(
+                        fb.database,
+                        "userList/" + user.uid
+                    );
+
+                    // Get user details
+                    fb.get(userData, `userList/${user.uid}`).then((snapshot) => {
+                        if (snapshot.exists()) {
+                            const userData = snapshot.val()
+
+                            // Update store if its logged in userData
+                            this.$store.dispatch('changeUserSettings', { name: userData.name, color: userData.color, icon: userData.icon })
+                        } else {
+                            console.log("No data available");
+                        }
+
+
+
+                        this.$router.push('/')
+                    }).catch((error) => {
+                        console.error(error);
+                    });
                 })
                 .catch((error) => {
                     // const errorCode = error.code;

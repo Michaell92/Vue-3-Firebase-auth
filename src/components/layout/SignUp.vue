@@ -17,6 +17,7 @@
 
 <script>
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import fb from '../../firebase'
 
 export default {
     data() {
@@ -26,26 +27,22 @@ export default {
             passwordRepeat: ''
         }
     },
+    computed: {
+        userData() {
+            return this.$store.getters.userData
+        }
+    },
     methods: {
         // Validate form
         validate() {
-            const warning = this.$refs.warning
             if (this.password !== this.passwordRepeat) {
-                warning.innerHTML = 'Passwords do not match!'
-
-                setTimeout(() => {
-                    warning.innerHTML = ''
-                }, 2000)
+                this.createWarning('Passwords do not match!')
 
                 return
             }
 
             if (this.password.length < 6) {
-                warning.innerHTML = 'Password needs to be at least 6 characters!'
-
-                setTimeout(() => {
-                    warning.innerHTML = ''
-                }, 2000)
+                this.createWarning('Password needs to be at least 6 characters!')
 
                 return
             }
@@ -61,15 +58,37 @@ export default {
                     // Signed in
                     const userId = userCredential.user.uid;
 
+
+                    // Get user details
+                    const userData = fb.ref(
+                        fb.database,
+                        "userList/" + userId
+                    );
+
+                    // Save current settings
+                    fb.set(userData, this.userData)
+
+
                     this.$router.push('/')
                     // ...
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    console.log(errorCode, errorMessage)
+                    if (errorCode === 'auth/email-already-in-use') {
+                        this.createWarning('Email already registered!')
+                    }
                     // ...
                 });
+        },
+        // Warning message
+        createWarning(message) {
+            const warning = this.$refs.warning
+            warning.innerHTML = message
+
+            setTimeout(() => {
+                warning.innerHTML = ''
+            }, 2000)
         }
     }
 }
