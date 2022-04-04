@@ -37,7 +37,7 @@ export default {
 
     // Get data from local storage if any
     const userData = localStorage.getItem('userData')
-    console.log(JSON.parse(userData))
+
     if (userData) {
       // Update store user settings
       this.$store.dispatch("changeUserSettings", JSON.parse(userData))
@@ -81,7 +81,6 @@ export default {
           messages
         );
       }
-      // console.log(this.userMessages, messages)
       this.active = true
     });
   }

@@ -43,7 +43,6 @@ export default {
       state.username = "";
       state.color = "";
       state.icon = null;
-      console.log(state);
     },
   },
   actions: {

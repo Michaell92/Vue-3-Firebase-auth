@@ -76,10 +76,6 @@
                     <img src="../../assets/chaticons/bot-14.png" alt />
                     <input type="radio" name="icon" @change="changeIcon(14)" />
                 </div>
-                <div class="icon-group">
-                    <img src="../../assets/chaticons/bot-15.png" alt />
-                    <input type="radio" name="icon" @change="changeIcon(15)" />
-                </div>
             </div>
         </div>
         <div class="submit">
