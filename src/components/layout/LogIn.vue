@@ -53,8 +53,11 @@ export default {
                         if (snapshot.exists()) {
                             const userData = snapshot.val()
 
-                            // Update store if its logged in userData
-                            this.$store.dispatch('changeUserSettings', { name: userData.name, color: userData.color, icon: userData.icon })
+                            // Update store if its logged in
+                            this.$store.dispatch('changeUserSettings', userData)
+
+                            // Update local storage
+                            localStorage.setItem('userData', JSON.stringify(userData))
                         } else {
                             console.log("No data available");
                         }

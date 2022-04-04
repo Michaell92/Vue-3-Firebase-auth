@@ -35,6 +35,14 @@ export default {
     const limitFirst = fb.limitToFirst
     const limitLast = fb.limitToLast
 
+    // Get data from local storage if any
+    const userData = localStorage.getItem('userData')
+    console.log(JSON.parse(userData))
+    if (userData) {
+      // Update store user settings
+      this.$store.dispatch("changeUserSettings", JSON.parse(userData))
+    }
+
     // Data path
     const data = fb.ref(
       fb.database,

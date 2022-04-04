@@ -52,9 +52,15 @@ export default {
     randomName() {
       return "Anonymous" + Math.random().toFixed(3).slice(2);
     },
+    newUserRandom() {
+      return "Newuser" + Math.random().toFixed(3).slice(2);
+    },
     getUserData() {
       return this.$store.getters.userData
-    }
+    },
+    isAuth() {
+      return this.$store.getters.isAuth
+    },
   },
   methods: {
     //   Submit message to general messages store
@@ -83,7 +89,12 @@ export default {
         if (this.getUserData.name.length) {
           this.message.userName = this.getUserData.name
         } else {
-          this.message.userName = this.randomName
+          if (this.isAuth) {
+            this.message.userName = this.newUserRandom
+          } else {
+            this.message.userName = this.randomName
+          }
+
         }
 
         // Set message color

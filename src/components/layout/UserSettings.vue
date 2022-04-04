@@ -112,6 +112,17 @@ export default {
         },
         userId() {
             return this.$store.getters.userId
+        },
+        userFiltered() {
+            const obj = {}
+
+            // Loop user object and get valid values
+            Object.keys(this.userData).forEach(key => {
+                let item = this.userData[key]
+                if (item) obj[key] = item
+            })
+
+            return obj
         }
 
     },
@@ -144,8 +155,11 @@ export default {
                     "userList/" + this.userId
                 );
 
+                // Update local storage
+                localStorage.setItem('userData', JSON.stringify(this.userData))
+
                 // Update database
-                fb.set(database, this.userData);
+                fb.update(database, this.userFiltered);
             }
 
             this.saved = true

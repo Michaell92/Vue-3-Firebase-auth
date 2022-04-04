@@ -25,7 +25,6 @@ export default {
 
     // Update user settings for each message
     updateUserSettings(state, data) {
-      console.log(data);
       if (data.name.length) {
         state.username = data.name;
       }
