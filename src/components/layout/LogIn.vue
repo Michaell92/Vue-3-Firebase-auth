@@ -3,9 +3,9 @@
         <div id="form-wrap">
             <span class="lead">Login</span>
             <div id="warning" ref="warning"></div>
-            <input type="email" v-model="signInName" placeholder="Email" />
+            <input type="email" v-model="signInName" placeholder="Email" required />
 
-            <input type="password" v-model="password" placeholder="Password" />
+            <input type="password" v-model="password" placeholder="Password" required />
 
             <button type="submit" class="button-basic button-primary login">Log In</button>
             <span>or</span>
