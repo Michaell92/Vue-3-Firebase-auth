@@ -1,10 +1,15 @@
 exports.handler = async (event, context) => {
-    const ip = event.headers['x-forwarded-for'] || event.connection.remoteAddress;
+    try {
+        const ip = event.headers['x-forwarded-for'] || event.connection.remoteAddress;
 
-    console.log('Visitor IP:', ip);
-
-    return {
-        statusCode: 200,
-        body: JSON.stringify({ message: 'IP logged successfully', ip }),
-    };
+        return {
+            statusCode: 200,
+            body: JSON.stringify({ message: 'IP logged successfully', ip }),
+        };
+    } catch (error) {
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ error: 'Internal Server Error', details: error.message }),
+        };
+    }
 };

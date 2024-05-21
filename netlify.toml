@@ -1,2 +1,7 @@
 [build]
   functions = "netlify/functions"
+
+[dev]
+  command = "vite"
+  targetPort = 3000
+  port = 8888
