@@ -85,7 +85,7 @@ export default {
                     hour12: false,
                 });
 
-                const payload = { IP: data.ip, date: formattedDate };
+                const payload = { IP: data.ip, userAgent: data.userAgent, date: formattedDate };
                 const dbRef = fb.ref(fb.database, 'userLogs');
                 const newRecordRef = fb.push(dbRef);
 
