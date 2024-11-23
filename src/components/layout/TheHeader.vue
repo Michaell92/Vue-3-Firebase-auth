@@ -8,7 +8,7 @@
           <img src="../../assets/icon.svg" alt="logo" />
         </div>
       </router-link>
-      <a href="https://github.com/michaell92/x-com" target="_blank" id="git">
+      <a href="https://github.com/x-com" target="_blank" id="git">
         <h3>GitHub</h3>
       </a>
     </nav>
